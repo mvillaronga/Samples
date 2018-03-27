@@ -10,8 +10,6 @@ class Entry extends Component {
 
     
     handleChange(event) {
-        //this.setState({ [name]: value})
-        //alert(event.target.value);
         this.props.onChange(event.target.value);
     }
 
