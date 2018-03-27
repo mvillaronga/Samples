@@ -6,10 +6,22 @@ import ItemList from './ItemList.js';
 import Entry from './Entry.js';
 
 class Dropdown extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            entry: '',
+            selectedValue: -1
+        }
+    }
+
+    handleChange(value) {
+        this.setState({ entry: value});
+    }
+
     render() {
         return (
             <div>
-                <Entry />
+                <Entry value={this.state.entry} onChange={this.handleChange.bind(this)} />
                 <ItemList elements={this.props.elements} isVisible={true} />
             </div>
         );

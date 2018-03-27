@@ -8,7 +8,7 @@ import Item from './Item.js';
 class ItemList extends Component {
     render() {
         const items = _.map(this.props.elements, function (ele) {
-            return <Item label={ele.label} value={ele.value} />
+            return <Item label={ele.label} value={ele.value} key={ele.value} />
         } );
         
         return (
