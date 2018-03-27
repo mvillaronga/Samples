@@ -2,18 +2,19 @@ import  React, { Component } from 'react';
 //import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 
-import ItemList from './ItemList.js';
+import Item from './Item.js';
 
-class Dropdown extends Component {
+class ItemList extends Component {
     render() {
         return (
-            <div>
-                <input type="text" />
-                <ItemList />
-            </div>
+                <div>
+                    <Item />
+                    <Item />
+                    <Item />
+                </div>
         );
     }
 }
 
 //export default connect(null, null)(Home);
-export default Dropdown;
+export default ItemList;
