@@ -3,6 +3,7 @@ import  React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
 import ItemList from './ItemList.js';
+import Entry from './Entry.js';
 
 let elements = [
     { label: "Steve Austin",  value: 1 },
@@ -18,7 +19,7 @@ class Dropdown extends Component {
     render() {
         return (
             <div>
-                <input type="text" />
+                <Entry />
                 <ItemList elements={elements} isVisible={true} />
             </div>
         );
