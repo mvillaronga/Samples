@@ -3,9 +3,6 @@ import  React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Item extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
             if (this.props.selected) {
@@ -16,7 +13,7 @@ class Item extends Component {
     }
 }
 
-Item.PropTypes = {
+Item.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired,
     clickHandler: PropTypes.func,            //require later
