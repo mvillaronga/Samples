@@ -8,9 +8,10 @@ class ItemList extends Component {
     render() {
         return (
                 <div>
-                    <Item />
-                    <Item />
-                    <Item />
+                    <Item label='fred' />
+                    <Item label='velma' />
+                    <Item label='shaggy' />
+                    <Item label='scooby' selected />
                 </div>
         );
     }
