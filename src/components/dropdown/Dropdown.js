@@ -17,13 +17,14 @@ class Dropdown extends Component {
     }
 
     handleChange(value) {
-        let filtered = _.filter(this.props.elements, function(ele) {
-            return ele.label.toLowerCase().indexOf(value.toLowerCase()) == 0;
+        let filtered = (value === '') ? '' : _.filter(this.props.elements, function(ele) {
+            return ele.label.toLowerCase().indexOf(value.toLowerCase()) === 0;
         }); 
 
         this.setState({ 
             entry: value,
-            filtered: filtered
+            filtered: filtered,
+            selectedValue: (filtered.length ===1) ? filtered[0].value : -1
         });
         
     }
@@ -34,7 +35,8 @@ class Dropdown extends Component {
             <div>
                 <Entry value={this.state.entry} onChange={this.handleChange.bind(this)} />
                 {/* <ItemList elements={this.props.elements} isVisible={true} /> */}
-                <ItemList elements={this.state.filtered} isVisible={this.state.filtered.length > 0} />
+                <ItemList elements={this.state.filtered} isVisible={this.state.filtered.length > 0} 
+                    selectedValue={this.state.selectedValue}/>
             </div>
         );
     }

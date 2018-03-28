@@ -7,8 +7,10 @@ import Item from './Item.js';
 
 class ItemList extends Component {
     render() {
+        let sel = this.props.selectedValue;
         const items = _.map(this.props.elements, function (ele) {
-            return <Item label={ele.label} value={ele.value} key={ele.value} />
+            let selected = (ele.value === sel)
+            return <Item label={ele.label} value={ele.value} key={ele.value} selected={selected} />
         } );
         
         return (
@@ -22,9 +24,10 @@ class ItemList extends Component {
 ItemList.propTypes = {
     elements: PropTypes.arrayOf(PropTypes.shape({
         label: PropTypes.string.isRequired,
-        value: PropTypes.number.isRequired
+        value: PropTypes.number.isRequired,
     })),
-    isVisible: PropTypes.bool
+    isVisible: PropTypes.bool.isRequired,
+    selectedValue: PropTypes.number.isRequired
 }
 
 //export default connect(null, null)(Home);
