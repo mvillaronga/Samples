@@ -37,6 +37,9 @@ class Dropdown extends Component {
             filtered: filtered,
             selectedValue: (filtered.length ===1) ? filtered[0].value : -1
         });
+
+        if (filtered.length === 0) 
+            this.props.onSelected({label:'',value:-1});
     }
 
     handleSelection = () => {
