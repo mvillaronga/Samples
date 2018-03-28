@@ -21,8 +21,10 @@ class Dropdown extends Component {
         let selection = _.find(this.props.elements, function(ele) {
             return ele.value === val;
         })
-        if (typeof selection !== 'undefined')
+        if (typeof selection !== 'undefined') {
             this.handleChange(selection.label);
+            this.props.onSelected(selection);
+        }
     }
 
     handleChange = (value) => {
@@ -62,7 +64,9 @@ Dropdown.propTypes = {
     elements: PropTypes.arrayOf(PropTypes.shape({
         label: PropTypes.string.isRequired,
         value: PropTypes.number.isRequired
-    }))
+    })),
+    onSelected: PropTypes.func
+
 }
 
 //export default connect(null, null)(Home);
