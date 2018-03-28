@@ -26,15 +26,22 @@ class Dropdown extends Component {
             filtered: filtered,
             selectedValue: (filtered.length ===1) ? filtered[0].value : -1
         });
-        
+    }
+
+    handleSelection() {
+        let sel = this.state.selectedValue;
+        let selection = _.find(this.props.elements, function(ele) {
+            return ele.value === sel;
+        })
+
+        alert(selection.label + ':' + selection.value);
     }
 
     render() {
 
         return (
             <div>
-                <Entry value={this.state.entry} onChange={this.handleChange.bind(this)} />
-                {/* <ItemList elements={this.props.elements} isVisible={true} /> */}
+                <Entry value={this.state.entry} onChange={this.handleChange.bind(this)} onSelection={this.handleSelection.bind(this)} />
                 <ItemList elements={this.state.filtered} isVisible={this.state.filtered.length > 0} 
                     selectedValue={this.state.selectedValue}/>
             </div>
