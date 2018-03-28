@@ -2,7 +2,12 @@ import  React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Display extends Component {
-    render= () => {
+    defaultProps = {
+        label: '',
+        value: -1
+    }
+
+    render() {
         return (
             <div>
                 <div>Label:{this.props.label}</div>

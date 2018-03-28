@@ -1,10 +1,13 @@
 import  React, { Component } from 'react';
-//import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class Item extends Component {
     handleClick = (val) => {
         this.props.onPick(val);
+    }
+
+    defaultProps = {
+        selected: false
     }
 
     render() {
@@ -19,9 +22,8 @@ class Item extends Component {
 Item.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired,
-    onPick: PropTypes.func,            //require later
+    onPick: PropTypes.func.isRequired,
     selected: PropTypes.bool
 }
 
-//export default connect(null, null)(Home);
 export default Item;

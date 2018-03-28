@@ -1,5 +1,4 @@
 import  React, { Component } from 'react';
-//import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import _ from 'underscore';
 
@@ -68,7 +67,7 @@ Dropdown.propTypes = {
         label: PropTypes.string.isRequired,
         value: PropTypes.number.isRequired
     })),
-    onSelected: PropTypes.func
+    onSelected: PropTypes.func.isRequired
 
 }
 

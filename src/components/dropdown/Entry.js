@@ -1,5 +1,4 @@
 import  React, { Component } from 'react';
-//import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class Entry extends Component {
@@ -10,11 +9,11 @@ class Entry extends Component {
     }
 
     
-    handleChange(event) {
+    handleChange = (event) => {
         this.props.onChange(event.target.value);
     }
 
-    handleKeyPress(evt) {
+    handleKeyPress = (evt) => {
         if (evt.key === 'Enter') {
             this.props.onSelection();
         }
@@ -32,6 +31,4 @@ Entry.propTypes = {
     onChange: PropTypes.func.isRequired,
     onSelection: PropTypes.func.isRequired
 }
-
-//export default connect(null, null)(Home);
 export default Entry;
