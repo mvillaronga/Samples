@@ -3,12 +3,15 @@ import  React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Item extends Component {
+    handleClick = (val) => {
+        this.props.onPick(val);
+    }
 
     render() {
             if (this.props.selected) {
-                return <div style={{color: 'blue'}}>{this.props.label}</div>
+                return <div style={{color: 'blue'}} onClick={() => {this.handleClick(this.props.value)}}>{this.props.label}</div>
             } else {
-                return <div>{this.props.label}</div>
+                return <div onClick={() => {this.handleClick(this.props.value)}}>{this.props.label}</div>
             }
     }
 }
@@ -16,7 +19,7 @@ class Item extends Component {
 Item.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired,
-    clickHandler: PropTypes.func,            //require later
+    onPick: PropTypes.func,            //require later
     selected: PropTypes.bool
 }
 

@@ -8,9 +8,10 @@ import Item from './Item.js';
 class ItemList extends Component {
     render() {
         let sel = this.props.selectedValue;
+        let handler = this.props.onPick;
         const items = _.map(this.props.elements, function (ele) {
             let selected = (ele.value === sel)
-            return <Item label={ele.label} value={ele.value} key={ele.value} selected={selected} />
+            return <Item label={ele.label} value={ele.value} key={ele.value} selected={selected} onPick={handler}/>
         } );
         
         return (
@@ -27,7 +28,8 @@ ItemList.propTypes = {
         value: PropTypes.number.isRequired,
     })),
     isVisible: PropTypes.bool.isRequired,
-    selectedValue: PropTypes.number.isRequired
+    selectedValue: PropTypes.number.isRequired,
+    onPick: PropTypes.func.isRequired
 }
 
 //export default connect(null, null)(Home);

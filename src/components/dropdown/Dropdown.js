@@ -16,7 +16,16 @@ class Dropdown extends Component {
         }
     }
 
-    handleChange(value) {
+
+    selectValue = (val) => {
+        let selection = _.find(this.props.elements, function(ele) {
+            return ele.value === val;
+        })
+        if (typeof selection !== 'undefined')
+            this.handleChange(selection.label);
+    }
+
+    handleChange = (value) => {
         let filtered = (value === '') ? '' : _.filter(this.props.elements, function(ele) {
             return ele.label.toLowerCase().indexOf(value.toLowerCase()) === 0;
         }); 
@@ -28,22 +37,22 @@ class Dropdown extends Component {
         });
     }
 
-    handleSelection() {
-        let sel = this.state.selectedValue;
-        let selection = _.find(this.props.elements, function(ele) {
-            return ele.value === sel;
-        })
-
-        alert(selection.label + ':' + selection.value);
+    handleSelection = () => {
+        this.selectValue(this.state.selectedValue);
     }
+
+    handlePick = (val) => {
+        this.selectValue(val);
+    }
+
 
     render() {
 
         return (
             <div>
-                <Entry value={this.state.entry} onChange={this.handleChange.bind(this)} onSelection={this.handleSelection.bind(this)} />
+                <Entry value={this.state.entry} onChange={this.handleChange} onSelection={this.handleSelection} />
                 <ItemList elements={this.state.filtered} isVisible={this.state.filtered.length > 0} 
-                    selectedValue={this.state.selectedValue}/>
+                    selectedValue={this.state.selectedValue} onPick={this.handlePick} />
             </div>
         );
     }
