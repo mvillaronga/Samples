@@ -11,7 +11,8 @@ class Dropdown extends Component {
         this.state = {
             entry: '',
             selectedValue: -1,
-            filtered: []
+            filtered: [],
+            picked: false
         }
     }
 
@@ -23,6 +24,9 @@ class Dropdown extends Component {
         if (typeof selection !== 'undefined') {
             this.handleChange(selection.label);
             this.props.onSelected(selection);
+            this.setState({
+                picked: true
+            })
         }
     }
 
@@ -34,11 +38,11 @@ class Dropdown extends Component {
         this.setState({ 
             entry: value,
             filtered: filtered,
-            selectedValue: (filtered.length ===1) ? filtered[0].value : -1
+            selectedValue: (filtered.length ===1) ? filtered[0].value : -1,
+            picked: false
         });
 
-        if (filtered.length === 0) 
-            this.props.onSelected({label:'',value:-1});
+        this.props.onSelected({label:'',value:-1});
     }
 
     handleSelection = () => {
@@ -55,7 +59,8 @@ class Dropdown extends Component {
         return (
             <div>
                 <Entry value={this.state.entry} onChange={this.handleChange} onSelection={this.handleSelection} />
-                <ItemList elements={this.state.filtered} isVisible={this.state.filtered.length > 0} 
+                <br />
+                <ItemList elements={this.state.filtered} isVisible={this.state.filtered.length > 0 && !this.state.picked} 
                     selectedValue={this.state.selectedValue} onPick={this.handlePick} />
             </div>
         );
@@ -71,5 +76,4 @@ Dropdown.propTypes = {
 
 }
 
-//export default connect(null, null)(Home);
 export default Dropdown;

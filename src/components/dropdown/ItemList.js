@@ -1,5 +1,4 @@
 import  React, { Component } from 'react';
-//import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import _ from 'underscore';
 
@@ -15,7 +14,12 @@ class ItemList extends Component {
         } );
         
         return (
-                <div style={{display: this.props.isVisible ? 'block' : 'none' }}>
+                <div style={{
+                    display: this.props.isVisible ? 'inline-block' : 'none',
+                    overflowY: 'auto',
+                    border: '1px solid',
+                    width: 'auto'
+                 }}>
                     {items}
                 </div>
         );
@@ -32,5 +36,4 @@ ItemList.propTypes = {
     onPick: PropTypes.func.isRequired
 }
 
-//export default connect(null, null)(Home);
 export default ItemList;

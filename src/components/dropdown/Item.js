@@ -12,9 +12,9 @@ class Item extends Component {
 
     render() {
             if (this.props.selected) {
-                return <div style={{color: 'blue'}} onClick={() => {this.handleClick(this.props.value)}}>{this.props.label}</div>
+                return <div style={{backgroundColor: 'cyan', border: '1px', padding: '3px'}} onClick={() => {this.handleClick(this.props.value)}}>{this.props.label}</div>
             } else {
-                return <div onClick={() => {this.handleClick(this.props.value)}}>{this.props.label}</div>
+                return <div style={{border: '1px'}} onClick={() => {this.handleClick(this.props.value)}}>{this.props.label}</div>
             }
     }
 }
